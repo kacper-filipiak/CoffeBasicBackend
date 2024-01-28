@@ -3,16 +3,19 @@ package model
 import "github.com/go-pg/pg/v10"
 
 type CoffeBag struct {
+    tableName struct{} `pg:"coffe_bags"`
 	ID        int64      `json:"id"`
-	weight    int64      `json:"weight"`
-	coffeType *CoffeType `json:"coffeType" pg:"rel:has-one"`
-	roastDate int64      `json:"date"`
+	Weight    float64      `json:"weight"`
+    CoffeTypeId int64   `pg:"coffe_type_id"` 
+    CoffeType *CoffeType `json:"coffeType" pg:"rel:has-one,fk:coffe_type_id"`
+	RoastDate int64      `json:"date"`
 }
 
 func GetAllCoffeBags(pgdb *pg.DB) ([]*CoffeBag, error) {
 	coffeBags := make([]*CoffeBag, 0)
 
 	err := pgdb.Model(&coffeBags).
+        Relation("CoffeType").
 		Select()
 
 	return coffeBags, err

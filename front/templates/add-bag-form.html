@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Coffe home</title>
+</head>
+<body>
+    {{name}}
+    <ul id="navigation">
+    {% for key, value in navigation.items() %}
+        <li><a href="{{ value }}">{{ key }}</a></li>
+    {% endfor %}
+    </ul>
+
+    <h1>Add coffe bag</h1>
+    <form method="POST">
+        <p>Coffe type</p>
+        <select name="type_name" id="type_name">
+          {% for coffe_type in types %}
+          <option value={{coffe_type['name']}}>{{coffe_type['name']}}</option>
+          {% endfor %}
+        </select>
+        <p>Coffe bag weight</p>
+        <input name="weight">
+        <p>Coffe roast date</p>
+        <input name="roast_date">
+        <input type="submit">
+    </form>
+</body>
+</html>

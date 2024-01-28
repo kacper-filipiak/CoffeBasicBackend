@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Coffe home</title>
+</head>
+<body>
+    <h1>Coffe Home</h1>
+    <ul id="navigation">
+    {% for key, value in navigation.items() %}
+        <li><a href="{{ value }}">{{ key }}</a></li>
+    {% endfor %}
+    </ul>
+</body>
+</html>

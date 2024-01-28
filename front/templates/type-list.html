@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Coffe home</title>
+</head>
+<body>
+    <ul id="navigation">
+    {% for key, value in navigation.items() %}
+        <li><a href="{{ value }}">{{ key }}</a></li>
+    {% endfor %}
+    </ul>
+
+    <h1>Coffe types</h1>
+    <table>
+    <tr>
+        <td><a>id</a></td> 
+        <td><a>name</a></td>
+    </tr>
+    {% for coffe_type in types %}
+    <tr>
+        <td><a>{{coffe_type["id"]}}</a></td>
+            <td><a>{{coffe_type["name"]}}</a></td>
+    </tr>
+    {% endfor %}
+    </table>
+</body>
+</html>

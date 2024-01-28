@@ -4,10 +4,21 @@ services:
   db:
     image: postgres
     restart: always
+    networks:
+      - dbnet
     environment: 
       POSTGRES_PASSWORD: admin
+  front:
+    build: ./front
+    networks:
+      - intranet
+    ports:
+      - 5000:5000
   api:
     build: .
+    networks:
+      - intranet
+      - dbnet
     ports:
       - 8080:8080
     environment: 
@@ -15,4 +26,6 @@ services:
       - DATABASE_URL=db
     depends_on:
       - db
-
+networks:
+  intranet:
+  dbnet:

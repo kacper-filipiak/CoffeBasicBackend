@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Coffe home</title>
+</head>
+<body>
+    {{name}}
+    <ul id="navigation">
+    {% for key, value in navigation.items() %}
+        <li><a href="{{ value }}">{{ key }}</a></li>
+    {% endfor %}
+    </ul>
+
+    <h1>Add coffe type</h1>
+    <form method="POST">
+        <p>Coffe type name</p>
+        <input name="type_name">
+        <input type="submit">
+    </form>
+</body>
+</html>
